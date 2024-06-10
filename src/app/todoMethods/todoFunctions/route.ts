@@ -1,10 +1,10 @@
 import connectTodoDB from "@/mongoDb/mongoDb";
 import { TodoModel } from "@/models/todo-model";
-connectTodoDB();
 
-export const GET = (req: Request) => {
+export const GET = async (req: Request) => {
+  connectTodoDB();
   try {
-    const allTodo = TodoModel.find();
+    const allTodo = await TodoModel.find();
     return Response.json({ allTodo: allTodo });
   } catch (err) {
     return Response.json({ message: err });
@@ -12,6 +12,7 @@ export const GET = (req: Request) => {
 };
 
 export const POST = async (req: Request) => {
+  connectTodoDB();
   const body = await req.json();
   console.log(body);
 
@@ -20,6 +21,7 @@ export const POST = async (req: Request) => {
       title: body.title,
       status: body.status,
       team: body.team,
+      createdOn: new Date(),
     });
     const allTodo = await TodoModel.find();
 
@@ -28,4 +30,18 @@ export const POST = async (req: Request) => {
     return Response.json({ message: err });
   }
 };
-export const DELETE = () => {};
+export const DELETE = async (req: Request) => {
+  connectTodoDB();
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  console.log(id);
+
+  try {
+    await TodoModel.findByIdAndDelete(id);
+    const allTodo = await TodoModel.find();
+
+    return Response.json({ allTodo: allTodo });
+  } catch (err) {
+    return Response.json({ message: err });
+  }
+};

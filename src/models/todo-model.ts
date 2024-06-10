@@ -1,9 +1,12 @@
+// models/todo-model.js
 import mongoose from "mongoose";
 
 const todoSchema = new mongoose.Schema({
-  title: { type: String, unique: true },
-  status: Boolean,
-  team: String,
+  title: { type: String, required: true },
+  status: { type: Boolean, default: false },
+  team: { type: String, required: true },
+  createdOn: Date,
+  // id: String,
 });
 
 export const TodoModel =
