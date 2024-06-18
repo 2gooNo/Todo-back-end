@@ -2,7 +2,7 @@ import { TodoModel } from "@/graphql/models/todo-model";
 import { TodoId } from "@/graphql/generated/client";
 
 export const deleteTodo = async (_: any, { input }: { input: TodoId }) => {
-  const id = input;
+  const { id } = input;
 
   try {
     await TodoModel.findByIdAndDelete(id);
@@ -10,6 +10,7 @@ export const deleteTodo = async (_: any, { input }: { input: TodoId }) => {
 
     return allTodo;
   } catch (err) {
+    console.log(err);
     return err;
   }
 };

@@ -25,6 +25,7 @@ export type Mutation = {
   addTeam?: Maybe<Array<Maybe<Team>>>;
   addTodo?: Maybe<Array<Maybe<Todo>>>;
   deleteTodo?: Maybe<Array<Maybe<Todo>>>;
+  markAsDone?: Maybe<Array<Maybe<Todo>>>;
 };
 
 
@@ -39,7 +40,12 @@ export type MutationAddTodoArgs = {
 
 
 export type MutationDeleteTodoArgs = {
-  input?: InputMaybe<TodoId>;
+  input?: InputMaybe<DeleteTodoInput>;
+};
+
+
+export type MutationMarkAsDoneArgs = {
+  input?: InputMaybe<MarkAsDoneInput>;
 };
 
 export type Query = {
@@ -55,6 +61,7 @@ export type Team = {
 
 export type Todo = {
   __typename?: 'Todo';
+  _id?: Maybe<Scalars['String']['output']>;
   status?: Maybe<Scalars['Boolean']['output']>;
   team?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
@@ -64,8 +71,12 @@ export type AddTeamInput = {
   teamName?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type TodoId = {
+export type DeleteTodoInput = {
   id?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type MarkAsDoneInput = {
+  todoId?: InputMaybe<Scalars['String']['input']>;
 };
 
 

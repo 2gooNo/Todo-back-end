@@ -5,11 +5,12 @@ export const todoType = gql`
     title: String
     status: Boolean
     team: String
+    _id: String
   }
   type Query {
     getAllTodo: [Todo]
   }
-  input todoId {
+  input deleteTodoInput {
     id: String
   }
   input CreateTodoInput {
@@ -17,8 +18,12 @@ export const todoType = gql`
     status: Boolean
     team: String
   }
+  input markAsDoneInput {
+    todoId: String
+  }
   type Mutation {
     addTodo(input: CreateTodoInput): [Todo]
-    deleteTodo(input: todoId): [Todo]
+    deleteTodo(input: deleteTodoInput): [Todo]
+    markAsDone(input: markAsDoneInput): [Todo]
   }
 `;
