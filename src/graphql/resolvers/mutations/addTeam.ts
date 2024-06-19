@@ -1,5 +1,5 @@
 import { TeamModel } from "@/graphql/models/teams-model";
-import { AddTeamInput } from "@/graphql/generated/client";
+import { AddTeamInput } from "@/generated/index";
 export const addTeam = async (
   _: any,
   { input }: { input: AddTeamInput },

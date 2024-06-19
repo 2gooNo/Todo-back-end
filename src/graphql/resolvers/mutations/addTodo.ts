@@ -1,5 +1,5 @@
 import { TodoModel } from "@/graphql/models/todo-model";
-import { CreateTodoInput } from "@/graphql/generated/client";
+import { CreateTodoInput } from "@/generated/index";
 
 export const addTodo = async (
   _: any,

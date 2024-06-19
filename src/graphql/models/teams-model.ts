@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const teamSchema = new mongoose.Schema({
-  teamName: { type: String, unique: true },
+  teamName: String,
 });
 
 export const TeamModel =

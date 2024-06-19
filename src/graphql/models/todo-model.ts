@@ -6,7 +6,6 @@ const todoSchema = new mongoose.Schema({
   status: { type: Boolean, default: false },
   team: { type: String, required: true },
   createdOn: Date,
-  // id: String,
 });
 
 export const TodoModel =
