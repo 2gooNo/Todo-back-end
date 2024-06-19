@@ -1,7 +1,10 @@
 import { TodoModel } from "@/graphql/models/todo-model";
-import { TodoId } from "@/graphql/generated/client";
+import { DeleteTodoInput } from "@/generated";
 
-export const deleteTodo = async (_: any, { input }: { input: TodoId }) => {
+export const deleteTodo = async (
+  _: any,
+  { input }: { input: DeleteTodoInput }
+) => {
   const { id } = input;
 
   try {

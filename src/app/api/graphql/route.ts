@@ -10,6 +10,7 @@ connectTodoDB();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  introspection: true,
 });
 
 const handler = startServerAndCreateNextHandler<NextRequest>(server, {
