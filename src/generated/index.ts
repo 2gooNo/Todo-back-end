@@ -30,7 +30,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   addTeam?: Maybe<Array<Maybe<Team>>>;
   addTodo?: Maybe<Array<Maybe<Todo>>>;
-  createUser?: Maybe<User>;
+  addUser?: Maybe<User>;
   deleteTodo?: Maybe<Array<Maybe<Todo>>>;
   markAsDone?: Maybe<Array<Maybe<Todo>>>;
 };
@@ -46,7 +46,7 @@ export type MutationAddTodoArgs = {
 };
 
 
-export type MutationCreateUserArgs = {
+export type MutationAddUserArgs = {
   input: CreateUserInput;
 };
 
@@ -65,6 +65,12 @@ export type Query = {
   getAllTeam?: Maybe<Array<Maybe<Team>>>;
   getAllTodo?: Maybe<Array<Maybe<Todo>>>;
   getAllUser?: Maybe<Array<Maybe<User>>>;
+  getUser?: Maybe<User>;
+};
+
+
+export type QueryGetUserArgs = {
+  input: UserInput;
 };
 
 export type Team = {
@@ -87,6 +93,11 @@ export type User = {
   id: Scalars['ID']['output'];
   password: Scalars['String']['output'];
   username: Scalars['String']['output'];
+};
+
+export type UserInput = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type AddTeamInput = {

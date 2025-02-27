@@ -8,9 +8,12 @@ export const userSchema = gql`
     password: String!
     createdOn: String
   }
-
+  input UserInput {
+    email: String
+    password: String
+  }
   type Query {
-    # getUser(id: ID!): User
+    getUser(input: UserInput!): User
     getAllUser: [User]
   }
 
