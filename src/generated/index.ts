@@ -20,11 +20,17 @@ export type CreateTodoInput = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type CreateUserInput = {
+  email: Scalars['String']['input'];
+  password: Scalars['String']['input'];
+  username: Scalars['String']['input'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addTeam?: Maybe<Array<Maybe<Team>>>;
   addTodo?: Maybe<Array<Maybe<Todo>>>;
-  createUser?: Maybe<Array<Maybe<User>>>;
+  createUser?: Maybe<User>;
   deleteTodo?: Maybe<Array<Maybe<Todo>>>;
   markAsDone?: Maybe<Array<Maybe<Todo>>>;
 };
@@ -41,7 +47,7 @@ export type MutationAddTodoArgs = {
 
 
 export type MutationCreateUserArgs = {
-  input?: InputMaybe<AddUserInput>;
+  input: CreateUserInput;
 };
 
 
@@ -76,20 +82,15 @@ export type Todo = {
 
 export type User = {
   __typename?: 'User';
-  _id?: Maybe<Scalars['String']['output']>;
-  email?: Maybe<Scalars['String']['output']>;
-  password?: Maybe<Scalars['String']['output']>;
-  userName?: Maybe<Scalars['String']['output']>;
+  createdOn?: Maybe<Scalars['String']['output']>;
+  email: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  password: Scalars['String']['output'];
+  username: Scalars['String']['output'];
 };
 
 export type AddTeamInput = {
   teamName?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type AddUserInput = {
-  email?: InputMaybe<Scalars['String']['input']>;
-  password?: InputMaybe<Scalars['String']['input']>;
-  userName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DeleteTodoInput = {

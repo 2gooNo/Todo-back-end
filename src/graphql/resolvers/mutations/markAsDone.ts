@@ -8,8 +8,9 @@ export const markAsDone = async (
   const { todoId } = input;
 
   try {
+    const prevTodoStatus = await TodoModel.findById(todoId).select("status");
     await TodoModel.findByIdAndUpdate(todoId, {
-      status: true,
+      status: !prevTodoStatus?.status,
     });
     const allTodo = await TodoModel.find();
 
