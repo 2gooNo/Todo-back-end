@@ -1,12 +1,19 @@
 import { gql } from "graphql-tag";
 
 export const userSchema = gql`
+  type Todo {
+    title: String
+    status: Boolean
+    team: String
+    _id: String
+  }
   type User {
     id: ID!
     username: String!
     email: String!
     password: String!
     createdOn: String
+    todos: [Todo]
   }
   input UserInput {
     email: String

@@ -92,6 +92,7 @@ export type User = {
   email: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   password: Scalars['String']['output'];
+  todos?: Maybe<Array<Maybe<Todo>>>;
   username: Scalars['String']['output'];
 };
 
