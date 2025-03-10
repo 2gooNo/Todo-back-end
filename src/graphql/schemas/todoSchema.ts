@@ -6,17 +6,19 @@ export const todoType = gql`
     status: Boolean
     team: String
     _id: String
+    user_id
   }
   type Query {
     getAllTodo: [Todo]
   }
   input deleteTodoInput {
-    id: String
+    todo_id: String
   }
   input CreateTodoInput {
     title: String
     status: Boolean
     team: String
+    user_id:
   }
   input markAsDoneInput {
     todoId: String

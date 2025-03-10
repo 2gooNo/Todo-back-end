@@ -5,13 +5,6 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   createdOn: { type: Date, default: Date.now },
-  todos: [
-    {
-      title: String,
-      status: Boolean,
-      _id: String,
-    },
-  ],
 });
 
 export const UserModel =
